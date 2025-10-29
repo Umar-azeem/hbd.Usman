@@ -1,9 +1,7 @@
 "use client"
-
 import { useState, useRef, useEffect } from "react"
 import { Volume2, VolumeX, Heart, Send } from "lucide-react"
 import Confetti from "react-confetti"
-
 export default function BirthdayPage() {
   const [showConfetti, setShowConfetti] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
@@ -11,7 +9,6 @@ export default function BirthdayPage() {
   const [senderName, setSenderName] = useState("")
   const audioRef = useRef<HTMLAudioElement>(null)
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
-
   useEffect(() => {
     setWindowSize({ width: window.innerWidth, height: window.innerHeight })
     const handleResize = () => {
@@ -56,23 +53,23 @@ export default function BirthdayPage() {
 
   const memories = [
     {
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-2vAoKWw6qlYJG00WzIkdXVVLvULFnQ.png",
+      image: "us1.png",
       caption: "Peaceful moments by the lake",
     },
     {
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-wmlD15KZtwQ5syesiIFmBE43lLzfm7.png",
+      image: "us2.png",
       caption: "Elegant and thoughtful",
     },
     {
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-7zYxyRJzmURctYsPiMv4TdC9ct0rOE.png",
+      image: "us3.png",
       caption: "Formal and distinguished",
     },
     {
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-asbdf5985Gq4hSRLvHAZI6c3nVNZxk.png",
+      image: "us4.png",
       caption: "Winter adventures",
     },
     {
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gtC0ilPelBbDMj5onlI8Xs0LJeExFd.png",
+      image: "us5.png",
       caption: "Stylish and confident",
     },
   ]
@@ -125,7 +122,6 @@ export default function BirthdayPage() {
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-red-50 to-rose-50">
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} />}
 
-      {/* Audio Player */}
       <audio
         ref={audioRef}
         src="/hbd.mp3"
@@ -134,7 +130,6 @@ export default function BirthdayPage() {
         muted={isMuted}
       />
 
-      {/* Music Toggle Button */}
       <button
         onClick={toggleAudio}
         className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 bg-white/80 backdrop-blur-sm p-2 sm:p-3 rounded-full shadow-lg hover:bg-white transition-all"
@@ -147,33 +142,27 @@ export default function BirthdayPage() {
         )}
       </button>
 
-      {/* Hero Section */}
       <section
-  className="min-h-screen flex flex-col items-center justify-center px-4 py-16 sm:py-20 text-center relative overflow-hidden"
+  className="lg:min-h-screen flex flex-col items-center justify-center px-4 py-16 sm:py-20 text-center relative overflow-hidden"
 >
-  {/* 🎥 Background Video */}
   <video
     autoPlay
     loop
     muted
     playsInline
-    className="absolute inset-0 w-full h-full object-cover"
+    className="absolute inset-0 w-full lg:h-full object-cover"
   >
     <source src="/usv.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
-  {/* Dark overlay for readability */}
   <div className="absolute inset-0  "></div>
 
-  {/* Foreground content */}
-  <div className="relative z-10 space-y-6 sm:space-y-8 max-w-2xl animate-fade-in">
+  <div className="relative z-10 space-y-6 sm:space-y-8 max-w-2xl animate-fade-in hidden md:flex">
     
-
-   
     <button
       onClick={triggerConfetti}
-      className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-base sm:text-lg shadow-lg hover:shadow-2xl transition-all transform hover:scale-110 animate-pulse-button"
+      className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold py-1 md:py-3 sm:py-2 md:px-6 sm:px-8 rounded-full text-base sm:text-lg shadow-lg hover:shadow-2xl transition-all transform hover:scale-110 animate-pulse-button"
     >
       <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
       Celebrate with Confetti!
@@ -181,7 +170,15 @@ export default function BirthdayPage() {
   </div>
 </section>
 
-      {/* Memories Section */}
+<div className="flex justify-center  py-5 max-w-2xl animate-fade-in ">
+    <button
+      onClick={triggerConfetti}
+      className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold py-2 md:py-4 sm:py-2 px-4  rounded-full text-base sm:text-sm shadow-lg hover:shadow-2xl transition-all transform hover:scale-110 animate-pulse-button"
+    >
+      <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
+      Celebrate with Confetti!
+    </button>
+  </div>
       <section className="py-16 sm:py-20 px-4 bg-white/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-red-900 mb-12 sm:mb-16 text-balance">
@@ -209,7 +206,6 @@ export default function BirthdayPage() {
         </div>
       </section>
 
-      {/* Islamic Duas Section */}
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-br from-pink-100 to-red-100">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-red-900 mb-2 sm:mb-4 text-balance">
@@ -237,7 +233,6 @@ export default function BirthdayPage() {
         </div>
       </section>
 
-      {/* Wishes Section */}
       <section className="py-16 sm:py-20 px-4 bg-white/50 backdrop-blur-sm">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-red-900 mb-2 sm:mb-4 text-balance">
@@ -249,7 +244,6 @@ export default function BirthdayPage() {
 
           <div className="bg-gradient-to-br from-pink-50 to-red-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-red-200 animate-fade-in-up">
             <div className="space-y-4 sm:space-y-6">
-              {/* Sender Name Input */}
               <div>
                 <label className="block text-sm sm:text-base font-semibold text-red-900 mb-2">Your Name</label>
                 <input
@@ -261,7 +255,6 @@ export default function BirthdayPage() {
                 />
               </div>
 
-              {/* Wish Message Textarea */}
               <div>
                 <label className="block text-sm sm:text-base font-semibold text-red-900 mb-2">Your Wish Message</label>
                 <textarea
@@ -272,7 +265,6 @@ export default function BirthdayPage() {
                 />
               </div>
 
-              {/* Send Button */}
               <button
                 onClick={sendWishToWhatsApp}
                 className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold py-3 sm:py-4 px-6 rounded-lg text-base sm:text-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 flex items-center justify-center gap-2"
@@ -289,7 +281,6 @@ export default function BirthdayPage() {
         </div>
       </section>
 
-      {/* Closing Message */}
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-br from-pink-50 to-red-50">
         <div className="max-w-2xl mx-auto text-center space-y-4 sm:space-y-6">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-900 text-balance">
