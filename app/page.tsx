@@ -3,25 +3,28 @@ import { useState, useRef, useEffect } from "react"
 import { Volume2, VolumeX, Heart, Send } from "lucide-react"
 import Confetti from "react-confetti"
 export default function BirthdayPage() {
-  const [showConfetti, setShowConfetti] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [wishMessage, setWishMessage] = useState("")
   const [senderName, setSenderName] = useState("")
   const audioRef = useRef<HTMLAudioElement>(null)
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
-  useEffect(() => {
-    setWindowSize({ width: window.innerWidth, height: window.innerHeight })
-    const handleResize = () => {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
-    }
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+ const [showConfetti, setShowConfetti] = useState(false);
+const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+
+useEffect(() => {
+  setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+  const handleResize = () => {
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+  };
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
 
   const triggerConfetti = () => {
-    setShowConfetti(true)
-    setTimeout(() => setShowConfetti(false), 3000)
-  }
+  setShowConfetti(true);
+  setTimeout(() => setShowConfetti(false), 5000); // show for 5 sec instead of 3
+};
+
 
   const toggleAudio = () => {
     if (audioRef.current) {
@@ -51,13 +54,27 @@ export default function BirthdayPage() {
     setSenderName("")
   }
 
+  {showConfetti && (
+  <Confetti
+    width={windowSize.width}
+    height={windowSize.height}
+    numberOfPieces={800}      
+    gravity={0.3}             
+    wind={0.01}               
+    recycle={false}           
+    initialVelocityX={10}
+    initialVelocityY={20}
+  />
+)}
+
+
   const memories = [
     {
-      image: "us1.png",
+      image: "us9.png",
       caption: "Peaceful moments by the lake",
     },
     {
-      image: "us2.png",
+      image: "us8.png",
       caption: "Elegant and thoughtful",
     },
     {
@@ -69,7 +86,7 @@ export default function BirthdayPage() {
       caption: "Winter adventures",
     },
     {
-      image: "us5.png",
+      image: "us10.png",
       caption: "Stylish and confident",
     },
   ]
@@ -185,24 +202,26 @@ export default function BirthdayPage() {
             Cherished Memories
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {memories.map((memory, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-110 animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <img
-                  src={memory.image || "/placeholder.svg"}
-                  alt={memory.caption}
-                  className="w-full h-64 sm:h-72 md:h-80 object-cover group-hover:scale-125 transition-transform duration-500 group-hover:rotate-2"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-red-900/80 via-red-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
-                  <p className="text-white font-semibold text-sm sm:text-lg text-balance">{memory.caption}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+  {memories.map((memory, index) => (
+    <div
+      key={index}
+      className="group relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 animate-fade-in-up bg-black flex items-center justify-center"
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      <img
+        src={memory.image || "/placeholder.svg"}
+        alt={memory.caption}
+        className="w-full h-auto max-h-80 object-contain transition-transform duration-500 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-red-900/80 via-red-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+        <p className="text-white font-semibold text-sm sm:text-lg text-balance">{memory.caption}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+
         </div>
       </section>
 
