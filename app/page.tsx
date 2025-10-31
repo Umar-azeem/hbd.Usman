@@ -136,7 +136,7 @@ useEffect(() => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-red-50 to-rose-50">
+    <div className="max-h-screen md:min-h-screen bg-gradient-to-br from-pink-50 via-red-50 to-rose-50">
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} />}
 
       <audio
@@ -159,24 +159,20 @@ useEffect(() => {
         )}
       </button>
 
-      <section
-  className="lg:min-h-screen flex flex-col items-center justify-center px-4 py-16 sm:py-20 text-center relative overflow-hidden"
->
+      <section className="flex flex-col h-1/3 items-center justify-center  py-22 sm:py-20 md:py-50  text-center relative overflow-hidden">
   <video
     autoPlay
     loop
     muted
     playsInline
-    className="absolute inset-0 w-full lg:h-full object-cover"
+    className="absolute inset-0 w-full h-full object-cover"
   >
     <source src="/usv.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
   </video>
 
-  <div className="absolute inset-0  "></div>
+  <div className="absolute inset-0"></div>
 
   <div className="relative z-10 space-y-6 sm:space-y-8 max-w-2xl animate-fade-in hidden md:flex">
-    
     <button
       onClick={triggerConfetti}
       className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold py-1 md:py-3 sm:py-2 md:px-6 sm:px-8 rounded-full text-base sm:text-lg shadow-lg hover:shadow-2xl transition-all transform hover:scale-110 animate-pulse-button"
@@ -187,18 +183,20 @@ useEffect(() => {
   </div>
 </section>
 
-<div className="flex justify-center  py-5 max-w-2xl animate-fade-in ">
+
+
+      <section className="py-5 sm:py-20 px-4 bg-white/50 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto">
+          <div className="md:hidden flex justify-center  py-2 max-w-2xl animate-fade-in ">
     <button
       onClick={triggerConfetti}
       className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold py-2 md:py-4 sm:py-2 px-4  rounded-full text-base sm:text-sm shadow-lg hover:shadow-2xl transition-all transform hover:scale-110 animate-pulse-button"
     >
-      <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
-      Celebrate with Confetti!
+      <Heart className="w-5 h-4 sm:w-6 sm:h-6" />
+      Celebrate 
     </button>
   </div>
-      <section className="py-16 sm:py-20 px-4 bg-white/50 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-red-900 mb-12 sm:mb-16 text-balance">
+          <h2 className="text-md md:text-5xl font-bold text-center text-red-900 mb-4 md:mb-16 text-balance">
             Cherished Memories
           </h2>
 
@@ -225,12 +223,12 @@ useEffect(() => {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 px-4 bg-gradient-to-br from-pink-100 to-red-100">
+      <section className="py-4 md:py-16 sm:py-20 px-4 bg-gradient-to-br from-pink-100 to-red-100">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-red-900 mb-2 sm:mb-4 text-balance">
+          <h2 className="text-sm md:text-4xl md:text-5xl font-bold text-center text-red-900 mb-2 sm:mb-4 text-balance">
             Duas for Long Life & Blessings
           </h2>
-          <p className="text-center text-red-800 mb-12 sm:mb-16 text-base sm:text-lg">
+          <p className="text-center text-red-800 mb-4 md:mb-16 text-base sm:text-lg">
             May Allah bless you with a long, healthy, and prosperous life
           </p>
 
@@ -254,10 +252,10 @@ useEffect(() => {
 
       <section className="py-16 sm:py-20 px-4 bg-white/50 backdrop-blur-sm">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-red-900 mb-2 sm:mb-4 text-balance">
+          <h2 className="text-sm md:text-4xl  font-bold text-center text-red-900 mb-2 sm:mb-4 text-balance">
             Send Your Wishes
           </h2>
-          <p className="text-center text-red-800 mb-8 sm:mb-12 text-base sm:text-lg">
+          <p className="text-center text-red-800 mb-4 md:mb-12 text-base text-sm md:text-lg">
             Write a special message and send it directly to Usman's WhatsApp
           </p>
 
@@ -286,9 +284,9 @@ useEffect(() => {
 
               <button
                 onClick={sendWishToWhatsApp}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold py-3 sm:py-4 px-6 rounded-lg text-base sm:text-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold py-1 md:py-4 px-2 md:px-6 rounded-lg text-base sm:text-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 flex items-center justify-center gap-2"
               >
-                <Send className="w-5 h-5 sm:w-6 sm:h-6" />
+                <Send className="w-4 h-4 sm:w-6 sm:h-6" />
                 Send via WhatsApp
               </button>
 
@@ -300,16 +298,16 @@ useEffect(() => {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 px-4 bg-gradient-to-br from-pink-50 to-red-50">
+      <section className="py-4 md:py-16 sm:py-20 px-4 bg-gradient-to-br from-pink-50 to-red-50">
         <div className="max-w-2xl mx-auto text-center space-y-4 sm:space-y-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-900 text-balance">
+          <h2 className="text-sm md:text-3xl  font-bold text-red-900 text-balance">
             Wishing You All the Best
           </h2>
           <p className="text-base sm:text-lg text-red-800 leading-relaxed">
             May every moment of your life be filled with happiness, success, and the love of those around you. Here's to
             another year of growth, adventure, and wonderful memories!
           </p>
-          <p className="text-xl sm:text-2xl font-bold text-red-600">Happy Birthday, Usman!</p>
+          <p className="text-md md:text-2xl font-bold text-red-600">Happy Birthday, Usman Ghani</p>
 
           <div className="mt-8 sm:mt-12 p-4 sm:p-6 bg-gradient-to-r from-pink-200 via-red-200 to-rose-200 rounded-xl sm:rounded-2xl border-2 border-red-500 shadow-lg animate-pulse">
             <p className="text-base sm:text-lg text-red-900 font-semibold">✨ With Love & Best Wishes From ✨</p>
